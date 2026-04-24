@@ -35,7 +35,8 @@ const HamburgerMenu = () => {
       <button
         className={styles.hamburgerBtn}
         onClick={() => setIsOpen(!isOpen)}
-        aria-label={isOpen ? 'Tutup menu' : 'Buka menu'}
+        aria-label={isOpen ? 'Open' : 'Close'}
+        title={`Menu`}
         aria-expanded={isOpen}
         type="button"
       >

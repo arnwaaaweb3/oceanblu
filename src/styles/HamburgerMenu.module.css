@@ -27,14 +27,14 @@
 
 /* Active */
 .hamburgerBtn:active {
-  transform: scale(0.92);
+  transform: scale(0.8);
   opacity: 0.7;
 }
 
 /* Hover */
 .hamburgerBtn:hover {
   opacity: 0.85;
-  background: var(--filler);
+  transform: scale(1.1);
 }
 
 /* Overlay */

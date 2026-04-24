@@ -3,6 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 import styles from '@/styles/Header.module.css';
 import HamburgerMenu from '@/components/HamburgerMenu';
+import ThemeToggle from '@/components/ThemeToggle';
 
 const Header: React.FC = () => {
   return (
@@ -19,6 +20,7 @@ const Header: React.FC = () => {
 
       {/* Menu */}
       <div className={styles.menuContainer}>
+        <ThemeToggle/>
         <HamburgerMenu />
       </div>
 
