@@ -4,27 +4,23 @@ import './globals.css'
 
 const dejaVuSerif = localFont({
   src: [
-    // Regular
     {
-      path: '../fonts/DejaVuSerif.ttf',
+      path: '../../public/fonts/DejaVuSerif.ttf',
       weight: '400',
       style: 'normal',
     },
-    // Italic
     {
-      path: '../fonts/DejaVuSerif-Italic.ttf',
+      path: '../../public/fonts/DejaVuSerif-Italic.ttf',
       weight: '400',
       style: 'italic',
     },
-    // Bold
     {
-      path: '../fonts/DejaVuSerif-Bold.ttf',
+      path: '../../public/fonts/DejaVuSerif-Bold.ttf',
       weight: '700',
       style: 'normal',
     },
-    // Bold Italic
     {
-      path: '../fonts/DejaVuSerif-BoldItalic.ttf',
+      path: '../../public/fonts/DejaVuSerif-BoldItalic.ttf',
       weight: '700',
       style: 'italic',
     },
@@ -34,31 +30,27 @@ const dejaVuSerif = localFont({
 
 const dejaVuCondensed = localFont({
   src: [
-    // Condensed Regular
     {
-      path: '../fonts/DejaVuSerifCondensed.ttf',
+      path: '../../public/fonts/DejaVuSerifCondensed.ttf',
       weight: '400',
       style: 'normal',
     },
-    // Condensed Italic
     {
-      path: '../fonts/DejaVuSerifCondensed-Italic.ttf',
+      path: '../../public/fonts/DejaVuSerifCondensed-Italic.ttf',
       weight: '400',
       style: 'italic',
     },
-    // Condensed Bold
     {
-      path: '../fonts/DejaVuSerifCondensed-Bold.ttf',
+      path: '../../public/fonts/DejaVuSerifCondensed-Bold.ttf',
       weight: '700',
       style: 'normal',
     },
-    // Condensed Bold Italic
     {
-      path: '../fonts/DejaVuSerifCondensed-BoldItalic.ttf',
+      path: '../../public/fonts/DejaVuSerifCondensed-BoldItalic.ttf',
       weight: '700',
       style: 'italic',
     },
-    ],
+  ],
   variable: '--font-dejavu-condensed',
 })
 

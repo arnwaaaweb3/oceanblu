@@ -1,0 +1,33 @@
+/* /styles/Header.module.css */
+
+/* Background Header */
+.header {
+  position: fixed;
+  display: flex;
+  align-items: center; 
+  justify-content: space-between; 
+  padding: 0 1.2rem;        
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: none; 
+  height: 100px;
+  background-color: white;
+  border-bottom: 4px solid var(--filler);
+  z-index: 100;
+  box-sizing: border-box;  
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  line-height: 1;
+}
+
+/* Wrapper*/
+.menuContainer {
+  display: flex;
+  padding: 0 1.2rem;   
+  align-items: center;
+}

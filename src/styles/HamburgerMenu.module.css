@@ -1,0 +1,114 @@
+/* /styles/HamburgerMenu.module.css */
+
+/* Hamburger Button*/
+.hamburgerBtn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--primary);
+  outline: 3px solid var(--background);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+  z-index: 101;
+  position: relative;
+}
+
+/* Icon */
+.hamburgerIcon {
+  font-size: 24px;
+  color: var(--background);
+  transition: transform 0.2s ease;
+}
+
+/* Active */
+.hamburgerBtn:active {
+  transform: scale(0.92);
+  opacity: 0.7;
+}
+
+/* Hover */
+.hamburgerBtn:hover {
+  opacity: 0.85;
+  background: var(--filler);
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 101;
+  animation: fadeIn 0.2s ease-out forwards;
+  backdrop-filter: blur(2px); /* Optional: efek blur ringan */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Panel Menu*/
+.menuPanel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 320px;
+  max-width: 85vw;
+  height: 100vh;
+  background: var(--primary);
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+  z-index: 102;
+
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+  
+  display: flex;
+  flex-direction: column;
+}
+
+/* Panel Menu - Open */
+.menuPanel.open {
+  transform: translateX(0);
+  outline: 3px solid var(--filler);
+}
+
+/* Content*/
+.menuContent {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+  /* Scroll halus */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.25s ease 0.1s, transform 0.25s ease 0.1s;
+}
+
+.menuPanel.open .menuContent {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* === Responsive  ===*/
+@media (max-width: 480px) {
+  .menuPanel {
+    width: 240px;
+  }
+  .hamburgerBtn {
+    width: 48px;
+    height: 48px;
+  }
+  .hamburgerIcon {
+    font-size: 20px;
+  }
+}
