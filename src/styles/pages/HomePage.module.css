@@ -1,0 +1,36 @@
+/* src/styles/pages/HomePage.module.css */
+
+.blueWhale {
+  position: absolute;
+  right: -15rem;
+  bottom: -7.5rem;
+  z-index: 2;
+  pointer-events: auto;
+  opacity: 1;
+  transform: rotate(-6deg);
+  transition: transform 0.5s ease-in-out;
+}
+
+.blueWhale:hover {
+  transform: rotate(-6deg) scale(1.02);
+}
+
+.turtle {
+  position: absolute;
+  left: -16rem;
+  bottom: -5rem;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 1;
+  transform: rotate(12deg);
+  transition: transform 0.5s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .blueWhale {
+    width: 150px;
+    transform: rotate(-5deg) scale(0.8);
+    right: -20px;
+    bottom: -30px;
+  }
+}

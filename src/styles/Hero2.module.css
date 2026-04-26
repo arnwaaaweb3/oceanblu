@@ -1,0 +1,65 @@
+/* /styles/Hero2.module.css */
+
+.heroContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; 
+  min-height: 100vh; 
+  padding: 2rem; 
+  transition: background-color 0.3s ease;
+}
+
+.heroContent {
+  text-align: center;
+  margin-top: 20vh;
+}
+
+.heroTitle {
+  font-size: 3.5rem;
+  font-family: var(--font-dejavu);
+  margin-bottom: 1rem;
+  transition: color 0.3s ease;
+}
+
+.heroSubtitle {
+  font-size: 1.6rem;
+  font-family: var(--font-eb-garamond);
+  transition: color 0.3s ease;
+}
+
+.highlight {
+  display: inline-block;
+  padding: 0.1rem 0.8rem;
+  border-radius: 12px;
+  margin-left: 0.25rem;
+}
+
+[data-theme='dark'] .highlight {
+  background-color : var(--background);
+  color: var(--filler);
+}
+
+[data-theme='light'] .highlight {
+  background-color : var(--filler);
+  color: var(--background);
+}
+
+/* Light Mode */
+[data-theme='light'] .heroContainer {
+  background-color: var(--background);
+}
+
+[data-theme='light'] .heroTitle,
+[data-theme='light'] .heroSubtitle {
+  color: var(--primary); 
+}
+
+/* Dark Mode */
+[data-theme='dark'] .heroContainer {
+  background-color: var(--filler);
+}
+
+[data-theme='dark'] .heroTitle,
+[data-theme='dark'] .heroSubtitle {
+  color: var(--background);
+}

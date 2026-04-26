@@ -1,0 +1,192 @@
+/* src/styles/OceanGallery.module.css */
+
+/* ── Keyframe ── */
+@keyframes oceanMarquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── Wrapper ── */
+.gallery {
+  width: 100%;
+  padding: 2rem 0;
+}
+
+/* ── Track ── */
+.trackOuter {
+  overflow: hidden;
+  width: 100%;
+}
+
+.track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: oceanMarquee 32s linear infinite;
+}
+
+.track:hover {
+  animation-play-state: paused;
+}
+
+/* ── Card ── */
+.card {
+  position: relative;
+  flex-shrink: 0;
+  width: 250px;
+  height: 400px;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.05),
+              box-shadow 0.35s ease;
+}
+
+.card:hover {
+  border-radius: 14px;
+  transform: translateY(-7px) scale(1.02);
+}
+
+.cardImageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.cardImage {
+  transition: transform 0.5s ease !important;
+  image-rendering: high-quality;
+}
+
+.cardImage:hover { 
+  transform: scale(1.07) !important;
+}
+
+/* ── Overlay ── */
+.cardOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 20, 50, 0.88) 0%,
+    rgba(0, 20, 50, 0.25) 55%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+/* ── Badge ── */
+.badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 5rem;
+  background: var(--primary);
+  border: 0.5px solid var(--background);
+  color: var(--background);
+  font-family: var(--font-lexend);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  pointer-events: none;
+}
+
+/* ── Caption ── */
+.cardCaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  z-index: 10;
+}
+
+.cardTitle {
+  color: var(--primary);
+  font-size: 2rem;
+  font-weight: 500;
+  margin: 0 0 4px;
+  text-align: left;
+  line-height: 1.2;
+  font-family: var(--font-dejavu-condensed);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.cardDesc {
+  color: var(--primary);
+  font-size: 0.75rem;
+  margin: 0;
+  line-height: 1.5;
+  font-family: var(--font-dejavu);
+  text-align: left;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.28s ease, transform 0.28s ease;
+}
+
+.card:hover .cardDesc {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Navigation Dots ── */
+.dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 1.75rem;
+  padding: 0.5rem;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  background: #1d9e75;
+  opacity: 0.3;
+  transition: all 0.3s ease;
+}
+
+.dot:hover {
+  opacity: 0.65;
+  transform: scale(1.2);
+}
+
+.dotActive {
+  opacity: 1;
+  width: 24px;
+  border-radius: 4px;
+  background: #0f6e56;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .card {
+    width: 190px;
+    height: 260px;
+    border-radius: 12px;
+  }
+
+  .cardTitle {
+    font-size: 0.88rem;
+  }
+
+  .cardDesc {
+    font-size: 0.72rem;
+  }
+
+  .badge {
+    font-size: 9px;
+    padding: 2px 7px;
+  }
+}

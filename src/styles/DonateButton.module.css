@@ -1,0 +1,48 @@
+/* src/components/DonateButton.module.css */
+.donateButton {
+  /* Positioning (Right Top) */
+  position: absolute;
+  top: 4.5rem;
+  right: 4.5rem;
+
+  /* Styling */
+  display: inline-flex; /* Tambahan: agar teks & ikon sejajar */
+  align-items: center;  /* Tambahan: center secara vertikal */
+  gap: 10px;           /* Tambahan: jarak antara teks dan ikon hati */
+  padding: 0.75rem 1.5rem;
+  background-color: var(--secondary);
+  color: var(--background);
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  outline: 2px solid var(--background);
+  font-family: var(--font-lexend);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.donateButton:hover {
+  background-color: #c7a228;
+  transform: translateY(-2px);
+}
+
+/* Styling Ikon Hati */
+.icon {
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
+  color: var(--background);
+}
+
+/* Animasi detak jantung saat tombol di-hover */
+.donateButton:hover .icon {
+  animation: heartBeat 1s infinite;
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.2); }
+  50% { transform: scale(1.1); }
+  75% { transform: scale(1.2); }
+}

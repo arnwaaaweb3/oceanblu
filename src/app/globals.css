@@ -33,12 +33,17 @@
   --filler: #bbf8fa;
 }
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 body {
   background: var(--background);
   color: var(--primary);
-  font-family: var(--font-dejavu);
+  font-family: var(--font-dejavu), var(--font-dejavu-condensed), var(--font-eb-garamond), var(--font-lexend);
   transition: background-color var(--transition-speed) ease, 
-              color var(--transition-speed) ease;
+                            color var(--transition-speed) ease;
 }
 
 /* Hindari FOUC: sembunyikan konten sampai tema siap (opsional) */

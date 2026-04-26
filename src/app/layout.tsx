@@ -1,5 +1,6 @@
-// /src/app/layout.tsx
+// src/app/layout.tsx
 import localFont from 'next/font/local'
+import { Metadata } from 'next';
 import './globals.css'
 
 const dejaVuSerif = localFont({
@@ -54,6 +55,112 @@ const dejaVuCondensed = localFont({
   variable: '--font-dejavu-condensed',
 })
 
+const EBGaramond = localFont({
+  src: [
+    // Regular
+    {
+      path: '../../public/fonts/EBGaramond-Regular.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    // Italic
+    {
+      path: '../../public/fonts/EBGaramond-Italic.ttf',
+      weight: '400',
+      style: 'italic',
+    },
+    // Medium
+    {
+      path: '../../public/fonts/EBGaramond-Medium.ttf',
+      weight: '500',
+      style: 'normal',
+    },
+    // Medium Italic
+    {
+      path: '../../public/fonts/EBGaramond-MediumItalic.ttf',
+      weight: '500',
+      style: 'italic',
+    },
+    // SemiBold
+    {
+      path: '../../public/fonts/EBGaramond-SemiBold.ttf',
+      weight: '600',
+      style: 'normal',
+    },
+    // SemiBold Italic
+    {
+      path: '../../public/fonts/EBGaramond-SemiBoldItalic.ttf',
+      weight: '600',
+      style: 'italic',
+    },
+    // Bold
+    {
+      path: '../../public/fonts/EBGaramond-Bold.ttf',
+      weight: '700',
+      style: 'normal',
+    },
+    // Bold Italic
+    {
+      path: '../../public/fonts/EBGaramond-BoldItalic.ttf',
+      weight: '700',
+      style: 'italic',
+    },
+    // ExtraBold (if supported by your design)
+    {
+      path: '../../public/fonts/EBGaramond-ExtraBold.ttf',
+      weight: '800',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-eb-garamond',
+  display: 'swap',
+});
+
+const Lexend = localFont({
+  src: [
+    { path: '../../public/fonts/Lexend-Thin.ttf', weight: '100', style: 'normal' },
+    { path: '../../public/fonts/Lexend-ExtraLight.ttf', weight: '200', style: 'normal' },
+    { path: '../../public/fonts/Lexend-Light.ttf', weight: '300', style: 'normal' },
+    { path: '../../public/fonts/Lexend-Regular.ttf', weight: '400', style: 'normal' },
+    { path: '../../public/fonts/Lexend-Medium.ttf', weight: '500', style: 'normal' },
+    { path: '../../public/fonts/Lexend-SemiBold.ttf', weight: '600', style: 'normal' },
+    { path: '../../public/fonts/Lexend-Bold.ttf', weight: '700', style: 'normal' },
+    { path: '../../public/fonts/Lexend-ExtraBold.ttf', weight: '800', style: 'normal' },
+    { path: '../../public/fonts/Lexend-Black.ttf', weight: '900', style: 'normal' },
+  ],
+  display: 'swap',
+  variable: '--font-lexend', 
+});
+
+export const metadata: Metadata = {
+  title: {
+    default: 'Oceanblu',
+    template: '%s | Oceanblu'
+  },
+  description: "Ocean Conservation and Restoration Non-Profit Organization",
+  keywords: ['ocean restoration', 
+    'ocean', 'nature', 'marine', 'sea', 'animals', 'coral', 
+    'reefs', 'coral reefs', 'marine biodiversity', 'biome', 'aquatic', 'conservation', 'sustainability', 'environment',
+    'Indian Ocean', 'ocean conservation',
+    'ecosystem', 'marine life', 'oceanblu'],
+  authors: [{ name: 'Oceanblu' }],
+  openGraph: {
+    title: 'Oceanblu',
+    description: "Let's save our Ocean!",
+    url: 'https://oceanblu.vercel.app',
+    siteName: 'Oceanblu',
+    images: [
+      {
+        url: '/logo.webp', // Taruh foto di folder public
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: 'au_AUS',
+    type: 'website',
+  },
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -62,8 +169,29 @@ export default function RootLayout({
   return (
     <html 
       lang="id" 
-      className={`${dejaVuSerif.variable} ${dejaVuCondensed.variable}`}
+      className={`${dejaVuSerif.variable} 
+        ${dejaVuCondensed.variable} 
+        ${EBGaramond.variable} 
+        ${Lexend.variable}`}
+      suppressHydrationWarning // Menghindari peringatan mismatch karena manipulasi script di head
     >
+      <head>
+        {/* Blocking script untuk mencegah kilatan putih (flicker) sebelum React load */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var saved = localStorage.getItem('theme');
+                  var supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+                  var theme = saved || (supportDarkMode ? 'dark' : 'light');
+                  document.documentElement.setAttribute('data-theme', theme);
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
       <body>{children}</body>
     </html>
   )

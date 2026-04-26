@@ -9,10 +9,10 @@ const Header: React.FC = () => {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
-        <Image 
-          src="/logotext.webp" 
-          alt="Logo" 
-          width={300} 
+        <Image
+          src="/logotext.webp"
+          alt="Logo"
+          width={300}
           height={300}
           priority  // ← biar logo cepat load
         />
@@ -20,10 +20,9 @@ const Header: React.FC = () => {
 
       {/* Menu */}
       <div className={styles.menuContainer}>
-        <ThemeToggle/>
+        <ThemeToggle />
         <HamburgerMenu />
       </div>
-
     </header>
   );
 };
