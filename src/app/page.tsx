@@ -4,7 +4,8 @@ import Image from 'next/image';
 import Header from '@/components/Header';
 import Hero1 from '@/components/Hero1'; 
 import Hero2 from '@/components/Hero2';
-import FunFactTooltip from '@/components/FunFactToolTip';
+import Hero3 from '@/components/Hero3';
+import WhaleTooltip from '@/components/WhaleToolTip';
 import styles from '@/styles/pages/HomePage.module.css';
 
 export const metadata = {
@@ -23,7 +24,7 @@ export default function HomePage() {
           <Hero1/>
           
           {/* Tooltip wrapper untuk Blue Whale */}
-          <FunFactTooltip
+          <WhaleTooltip
             title="🐋 Blue Whale"
             fact="Blue whales are the largest animals ever known to have lived on Earth. Their heart alone weighs about 1,800 kg (4,000 lbs)! It's huge as a small car! Their tongue can weigh as much as an elephant."
             position="left"
@@ -37,7 +38,7 @@ export default function HomePage() {
               alt="Blue Whale"
               priority
             />
-          </FunFactTooltip>
+          </WhaleTooltip>
         </section>
 
         {/* Hero 2 */}
@@ -48,13 +49,7 @@ export default function HomePage() {
           />
 
           {/* Tooltip wrapper untuk Sea Turtle */}
-          <FunFactTooltip
-            title="🐢 Sea Turtle"
-            fact="Sea turtles have been around for over 100 million years — since the time of dinosaurs! They can hold their breath for up to 5 hours underwater when resting or sleeping."
-            position="right"
-            trigger="hover"
-            className={styles.turtle}
-          >
+          <div className={styles.turtle}>
             <Image 
               src="/turtle.webp" 
               width={700} 
@@ -62,7 +57,12 @@ export default function HomePage() {
               alt="Turtle"
               priority
             />
-          </FunFactTooltip>
+          </div>
+        </section>
+
+        {/* Hero 3*/}
+        <section className="relative">
+          <Hero3 />
         </section>
       </main>
     </>

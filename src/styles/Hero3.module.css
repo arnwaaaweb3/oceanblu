@@ -1,0 +1,151 @@
+/* styles/Hero3.module.css */
+.heroContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem 5%;
+  gap: 4rem;
+  transition: background-color 0.3s ease;
+  flex-wrap: wrap;
+}
+
+/* Kiri - Teks Content */
+.heroContent {
+  flex: 1;
+  margin-top: 3rem;
+  text-align: left;
+  min-width: 300px;
+}
+
+.heroTitle {
+  font-size: 3.5rem;
+  font-family: var(--font-dejavu);
+  margin-bottom: 1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.heroSubtitle {
+  font-size: 1.6rem;
+  font-family: var(--font-eb-garamond);
+  transition: color 0.3s ease;
+  text-align: justify;
+  line-height: 1.6;
+  margin-bottom: 1rem; 
+}
+
+.highlight {
+  display: inline-block;
+  padding: 0.1rem 0.8rem;
+  border-radius: 12px;
+  font-family: var(--font-lexend);
+  font-style: normal;
+  font-weight: 600;
+  margin-left: 0.25rem;
+}
+
+/* Tambahin ini di Hero3.module.css */
+.videoWrapper {
+  flex: 1;
+  min-width: 320px;
+  max-width: 600px;
+  position: relative; /* Penting buat posisi overlay */
+}
+
+.videoOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 16px; 
+  pointer-events: none; 
+  z-index: 1;
+}
+
+.selectedtext {
+    font-family: var(--font-eb-garamond);
+    font-weight: 600;
+    color: var(--filler);
+    background: linear-gradient(90deg, rgb(43, 117, 202) , #10507a);
+}
+
+.founders {
+  position: absolute;
+  z-index: 2; 
+  pointer-events: none;
+  bottom: 0rem;
+  right: 0rem;
+}
+
+/* Sticker Image styling */
+.foundersImage {
+  transition: transform 0.3s ease; 
+}
+
+.video {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  display: block;
+  position: relative;
+  z-index: 0;
+}
+
+/* Light Mode */
+[data-theme='light'] .heroContainer {
+  background-color: var(--background);
+}
+
+[data-theme='light'] .heroTitle,
+[data-theme='light'] .heroSubtitle {
+  color: var(--primary);
+}
+
+[data-theme='light'] .highlight {
+  background-color: var(--filler);
+  color: var(--background);
+}
+
+/* Dark Mode */
+[data-theme='dark'] .heroContainer {
+  background-color: var(--filler);
+}
+
+[data-theme='dark'] .heroTitle,
+[data-theme='dark'] .heroSubtitle {
+  color: var(--background);
+}
+
+[data-theme='dark'] .highlight {
+  background-color: var(--background);
+  color: var(--filler);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .heroContainer {
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 1.5rem;
+    gap: 3rem;
+  }
+  
+  .heroContent {
+    text-align: center;
+  }
+  
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+  
+  .heroSubtitle {
+    font-size: 1.2rem;
+  }
+  
+  .videoWrapper {
+    max-width: 100%;
+  }
+}

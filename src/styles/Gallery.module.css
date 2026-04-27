@@ -166,7 +166,7 @@
   opacity: 1;
   width: 24px;
   border-radius: 4px;
-  background: #0f6e56;
+  background: var(--background);
 }
 
 /* ── Responsive ── */

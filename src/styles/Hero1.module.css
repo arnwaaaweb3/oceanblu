@@ -60,7 +60,7 @@
   padding: 0.75rem 1.5rem; /* px-6 py-3 */
   background-color: var(--background);
   color: #ffffff;
-  border-radius: 999px;
+  border-radius: 99px;
   border: 2px solid var(--filler);
   transition: all 0.3s ease;
   border: none;

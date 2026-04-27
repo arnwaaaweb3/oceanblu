@@ -2,6 +2,7 @@
 import localFont from 'next/font/local'
 import { Metadata } from 'next';
 import './globals.css'
+import Head from 'next/head'
 
 const dejaVuSerif = localFont({
   src: [
@@ -173,10 +174,9 @@ export default function RootLayout({
         ${dejaVuCondensed.variable} 
         ${EBGaramond.variable} 
         ${Lexend.variable}`}
-      suppressHydrationWarning // Menghindari peringatan mismatch karena manipulasi script di head
+      suppressHydrationWarning
     >
-      <head>
-        {/* Blocking script untuk mencegah kilatan putih (flicker) sebelum React load */}
+      <Head>
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -191,7 +191,7 @@ export default function RootLayout({
             `,
           }}
         />
-      </head>
+      </Head>
       <body>{children}</body>
     </html>
   )
