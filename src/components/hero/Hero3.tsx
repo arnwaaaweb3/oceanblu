@@ -3,7 +3,8 @@
 
 import { useRef, useEffect } from 'react'
 import Image from 'next/image'
-import styles from '@/styles/Hero3.module.css'
+import styles from '@/styles/hero/Hero3.module.css'
+import ReactCountryFlag from "react-country-flag";
 
 export default function Hero3() {
     const videoRef = useRef<HTMLVideoElement>(null)
@@ -43,6 +44,12 @@ export default function Hero3() {
             <div className={styles.heroContent}>
                 <h1 className={styles.heroTitle}>
                     About <span className={styles.highlight}>US</span>
+                    <ReactCountryFlag 
+                        countryCode="AU" 
+                        svg
+                        className={styles.flag}
+                        style={{ fontSize: 0 }}
+                    />
                 </h1>
                 <p className={styles.heroSubtitle}>
                     Founded in 2014, Jan Gzrobski led the team to form a social organization focused on marine conservation.
@@ -66,6 +73,7 @@ export default function Hero3() {
                     height={700}
                     className={styles.foundersImage}
                     priority
+                    draggable={false}
                 />
             </div>
 

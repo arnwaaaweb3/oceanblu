@@ -14,7 +14,8 @@ const Header: React.FC = () => {
           alt="Logo"
           width={300}
           height={300}
-          priority  // ← biar logo cepat load
+          priority
+          draggable={false}
         />
       </div>
 

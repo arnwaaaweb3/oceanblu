@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import styles from '@/styles/Hero1.module.css';
+import styles from '@/styles/hero/Hero1.module.css';
 import { FaInstagram, FaTwitter, FaFacebook, FaLinkedin } from 'react-icons/fa';
 import DonateButton from '@/components/DonateButton';
 
@@ -41,6 +41,7 @@ const Hero = () => {
               className={styles.imagePlaceholder}
               sizes="100vw"
               style={{ objectFit: 'cover' }}
+              draggable={false}
             />
             <div className={styles.overlay}/>
             <div className={styles.content}>

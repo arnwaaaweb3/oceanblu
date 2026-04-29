@@ -88,6 +88,7 @@ const GalleryCard: React.FC<{ item: GalleryItem }> = ({ item }) => (
         sizes="(max-width: 768px) 190px, 250px"
         style={{ objectFit: 'cover' }}
         priority={item.priority}
+        draggable={false}
       />
     </div>
     <div className={styles.cardOverlay} />

@@ -1,0 +1,420 @@
+/* ============================================
+   LogoLoop Component Styles
+   ============================================ */
+
+/* Root Container */
+.logoloop {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* Horizontal Layout */
+.logoloop--horizontal {
+  height: auto;
+}
+
+/* Vertical Layout */
+.logoloop--vertical {
+  width: auto;
+  height: 100%;
+}
+
+/* Track - the moving container */
+.logoloop__track {
+  display: flex;
+  will-change: transform;
+  gap: 0;
+  cursor: pointer;
+}
+
+/* List - container for logo items */
+.logoloop__list {
+  display: flex;
+  flex-shrink: 0;
+  gap: var(--logoloop-gap, 32px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  align-items: center;
+}
+
+/* FIX: Hapus margin tambahan di list pertama dan terakhir */
+.logoloop__list:first-child,
+.logoloop__list:last-child {
+  margin: 0;
+  padding: 0;
+}
+
+/* Vertical variant */
+.logoloop--vertical .logoloop__list {
+  flex-direction: column;
+}
+
+/* Individual Logo Item */
+.logoloop__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: var(--logoloop-logoHeight, 80px);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* FIX: Pastiin item container gak nambahin extra spacing */
+.logoloop__item::before,
+.logoloop__item::after {
+  display: none;
+}
+
+/* Scale on hover */
+.logoloop--scale-hover .logoloop__item:hover {
+  transform: scale(1.05) translateY(-2px);
+}
+
+/* Link wrapper */
+.logoloop__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  height: 100%;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.logoloop__link:hover {
+  opacity: 0.85;
+}
+
+/* Node content wrapper (for custom React nodes) */
+.logoloop__node {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+/* Image styling */
+.logoloop img,
+.logoloop__node img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* ============================================
+   Fade Out Effects
+   ============================================ */
+
+/* Horizontal fade (left/right) */
+.logoloop--horizontal.logoloop--fade {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+}
+
+/* Vertical fade (up/down) */
+.logoloop--vertical.logoloop--fade {
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+}
+
+/* Custom fade color variant (if needed) */
+.logoloop--fade-custom {
+  mask-image: none;
+  -webkit-mask-image: none;
+}
+
+.logoloop--fade-custom::before,
+.logoloop--fade-custom::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.logoloop--fade-custom::before {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    var(--logoloop-fadeColor, #ffffff),
+    transparent
+  );
+}
+
+.logoloop--fade-custom::after {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    var(--logoloop-fadeColor, #ffffff),
+    transparent
+  );
+}
+
+/* Vertical custom fade */
+.logoloop--vertical.logoloop--fade-custom::before,
+.logoloop--vertical.logoloop--fade-custom::after {
+  width: 100%;
+  height: 80px;
+}
+
+.logoloop--vertical.logoloop--fade-custom::before {
+  top: 0;
+  bottom: auto;
+  background: linear-gradient(
+    to bottom,
+    var(--logoloop-fadeColor, #ffffff),
+    transparent
+  );
+}
+
+.logoloop--vertical.logoloop--fade-custom::after {
+  bottom: 0;
+  top: auto;
+  background: linear-gradient(
+    to top,
+    var(--logoloop-fadeColor, #ffffff),
+    transparent
+  );
+}
+
+/* ============================================
+   Animation States
+   ============================================ */
+
+/* Paused state (on hover if pauseOnHover is true) */
+.logoloop--paused .logoloop__track {
+  animation-play-state: paused;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .logoloop__track {
+    animation: none !important;
+    transform: none !important;
+  }
+  
+  .logoloop--scale-hover .logoloop__item:hover {
+    transform: none;
+  }
+}
+
+/* ============================================
+   Loading States
+   ============================================ */
+
+.logoloop--loading {
+  min-height: var(--logoloop-logoHeight, 80px);
+  position: relative;
+}
+
+.logoloop--loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-top-color: var(--logoloop-loadingColor, #666);
+  border-radius: 50%;
+  animation: logoloop-spin 0.8s linear infinite;
+}
+
+@keyframes logoloop-spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* ============================================
+   Responsive Styles
+   ============================================ */
+
+/* Tablet */
+@media (max-width: 768px) {
+  .logoloop__list {
+    gap: calc(var(--logoloop-gap, 32px) * 0.75);
+  }
+  
+  .logoloop__item {
+    height: calc(var(--logoloop-logoHeight, 80px) * 0.75);
+  }
+  
+  .logoloop--horizontal.logoloop--fade {
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 5%,
+      black 95%,
+      transparent
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 5%,
+      black 95%,
+      transparent
+    );
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .logoloop__list {
+    gap: calc(var(--logoloop-gap, 32px) * 0.5);
+  }
+  
+  .logoloop__item {
+    height: calc(var(--logoloop-logoHeight, 80px) * 0.6);
+  }
+  
+  .logoloop--horizontal.logoloop--fade {
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 3%,
+      black 97%,
+      transparent
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 3%,
+      black 97%,
+      transparent
+    );
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .logoloop--fade-custom::before {
+    background: linear-gradient(
+      to right,
+      var(--logoloop-fadeColor, #1a1a1a),
+      transparent
+    );
+  }
+  
+  .logoloop--fade-custom::after {
+    background: linear-gradient(
+      to left,
+      var(--logoloop-fadeColor, #1a1a1a),
+      transparent
+    );
+  }
+}
+
+/* ============================================
+   Accessibility
+   ============================================ */
+
+/* Focus visible for keyboard navigation */
+.logoloop__link:focus-visible {
+  outline: 2px solid var(--logoloop-focusColor, #0066cc);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .logoloop__item {
+    transition: none;
+  }
+  
+  .logoloop--scale-hover .logoloop__item:hover {
+    transform: none;
+  }
+}
+
+/* ============================================
+   Optional: Grayscale & Effects
+   ============================================ */
+
+/* Grayscale variant (optional) */
+.logoloop--grayscale .logoloop__item img {
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+.logoloop--grayscale .logoloop__item:hover img {
+  filter: grayscale(0%);
+}
+
+/* Blur variant (optional) */
+.logoloop--blur .logoloop__item img {
+  filter: blur(2px);
+  transition: filter 0.3s ease;
+}
+
+.logoloop--blur .logoloop__item:hover img {
+  filter: blur(0);
+}
+
+/* Brightness effect (optional) */
+.logoloop__item img {
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.logoloop__item:hover img {
+  filter: brightness(1.1);
+}
+
+/* ============================================
+   Print Styles
+   ============================================ */
+
+@media print {
+  .logoloop {
+    overflow: visible;
+  }
+  
+  .logoloop__track {
+    transform: none !important;
+    animation: none !important;
+  }
+  
+  .logoloop--fade {
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+  
+  .logoloop--fade-custom::before,
+  .logoloop--fade-custom::after {
+    display: none;
+  }
+}

@@ -2,7 +2,7 @@
 'use client';
 
 import React from 'react';
-import styles from '@/styles/Hero2.module.css';
+import styles from '@/styles/hero/Hero2.module.css';
 import Gallery from '@/components/Gallery';
 
 interface Hero2Props {

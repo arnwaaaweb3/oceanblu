@@ -14,6 +14,7 @@ interface WhaleTooltipProps {
   offsetY?: number;
   offsetX?: number;
   icon?: React.ReactNode;
+  verticalOffsetRatio?: number; // 🆕 prop baru: 0 = top, 0.5 = middle, 1 = bottom
 }
 
 export default function WhaleTooltip({
@@ -26,6 +27,7 @@ export default function WhaleTooltip({
   offsetY = 0,
   offsetX = 0,
   icon,
+  verticalOffsetRatio = 0.5, // default 50% (tengah)
 }: WhaleTooltipProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [tooltipPosition, setTooltipPosition] = useState({ top: 0, left: 0 });
@@ -44,13 +46,17 @@ export default function WhaleTooltip({
     let top = 0;
     let left = 0;
 
+    // Hitung vertical position berdasarkan ratio
+    const verticalCenter = triggerRect.top + scrollY + (triggerRect.height * verticalOffsetRatio);
+    const tooltipVerticalCenter = tooltipRect.height / 2;
+
     switch (position) {
       case 'left':
-        top = triggerRect.top + scrollY + triggerRect.height / 10 - tooltipRect.height / 10 - offsetY;
+        top = verticalCenter - tooltipVerticalCenter - offsetY;
         left = triggerRect.left + scrollX - tooltipRect.width - 15 - offsetX;
         break;
       case 'right':
-        top = triggerRect.top + scrollY + triggerRect.height / 2 - tooltipRect.height / 2 - offsetY;
+        top = verticalCenter - tooltipVerticalCenter - offsetY;
         left = triggerRect.right + scrollX + 15 + offsetX;
         break;
       case 'top':
@@ -64,7 +70,7 @@ export default function WhaleTooltip({
     }
 
     setTooltipPosition({ top, left });
-  }, [position, offsetY, offsetX]); // ← dependency yang bener
+  }, [position, offsetY, offsetX, verticalOffsetRatio]);
 
   useEffect(() => {
     if (isVisible) {
@@ -76,7 +82,7 @@ export default function WhaleTooltip({
         window.removeEventListener('scroll', updatePosition);
       };
     }
-  }, [isVisible, updatePosition]); // ← sekarang updatePosition stabil
+  }, [isVisible, updatePosition]);
 
   const handleMouseEnter = () => {
     if (trigger === 'hover') setIsVisible(true);
