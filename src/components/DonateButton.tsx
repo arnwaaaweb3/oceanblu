@@ -16,6 +16,7 @@ const DonateButton: React.FC<DonateButtonProps> = ({
     <button 
       className={styles.donateButton} 
       onClick={onClick}
+      title='Donate to Support Us ❤️'
     >
       <span>{text}</span>
       <FaHeart className={styles.icon} />

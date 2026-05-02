@@ -126,7 +126,7 @@
 }
 
 [data-theme='light'] .highlight {
-  background-color: var(--filler);
+  background-color: var(--secondary);
   color: var(--background);
 }
 

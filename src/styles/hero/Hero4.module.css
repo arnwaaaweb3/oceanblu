@@ -17,7 +17,6 @@
 .title {
   font-size: 2rem;
   font-family: var(--font-lexend);
-  color: var(--primary);
   margin-bottom: 2rem;
   margin-top: 0;
   font-weight: 600;
@@ -60,7 +59,7 @@
 }
 
 [data-theme='light'] .title {
-  color: var(--primary);
+  color: var(--filler);
 }
 
 /* Dark Mode */

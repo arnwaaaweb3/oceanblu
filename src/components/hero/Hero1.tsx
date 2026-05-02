@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import styles from '@/styles/hero/Hero1.module.css';
-import { FaInstagram, FaTwitter, FaFacebook, FaLinkedin } from 'react-icons/fa';
+import { FaInstagram, FaTwitter, FaFacebook, FaYoutube, FaLinkedin } from 'react-icons/fa';
 import DonateButton from '@/components/DonateButton';
 
 const HERO_DATA = [
@@ -63,6 +63,9 @@ const Hero = () => {
           </a>
           <a href="#" className={styles.socialIcon}>
             <FaTwitter aria-label= "Twitter/X" title="See us on X"size={24} />
+          </a>
+          <a href="#" className={styles.socialIcon}>
+            <FaYoutube aria-label= "Youtube" title="See us on Youtube"size={24} />
           </a>
           <a href="#" className={styles.socialIcon}>
             <FaFacebook aria-label= "Facebook" title="See us on Facebook" size={24} />

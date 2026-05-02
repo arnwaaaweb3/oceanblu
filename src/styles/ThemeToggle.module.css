@@ -3,7 +3,7 @@
 .toggleBtn {
   width: 30px;
   height: 30px;
-  background: var(--primary);
+  background: transparent;
   border: none;
   cursor: pointer;
   display: flex;
@@ -26,10 +26,17 @@
   transform: scale(1.1);
 }
 
+[data-theme='dark'] .icon {
+  color: var(--background);
+}
+
+[data-theme='light'] .icon {
+  color: var(--filler);
+}
+
 .icon {
   font-size: 40px;
   border: none;
-  color: var(--background);
 }
 
 @media (max-width: 480px) {

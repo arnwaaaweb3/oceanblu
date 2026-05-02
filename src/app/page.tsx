@@ -6,6 +6,8 @@ import Hero1 from '@/components/hero/Hero1';
 import Hero2 from '@/components/hero/Hero2';
 import Hero3 from '@/components/hero/Hero3';
 import Hero4 from '@/components/hero/Hero4';
+import Hero5 from '@/components/hero/Hero5';
+import Footer from '@/components/Footer';
 import WhaleTooltip from '@/components/WhaleToolTip';
 import styles from '@/styles/pages/HomePage.module.css';
 
@@ -82,10 +84,17 @@ export default function HomePage() {
           <Hero3 />
         </section>
 
+        {/* Hero 4*/}
         <section className="relative">
           <Hero4 />
         </section>
+
+        {/* Hero 5*/}
+        <section className="relative">
+          <Hero5 />
+        </section>
       </main>
+      <Footer />
     </>
   );
 }

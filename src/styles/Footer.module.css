@@ -1,0 +1,131 @@
+/* src/styles/Footer.module.css */
+
+.footer {
+  background-color: var(--background);
+  padding: 4rem 2rem 2rem;
+  font-family: var(--font-lexend);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.topSection {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 4rem;
+  margin-bottom: 3rem;
+}
+
+.brand p {
+  font-family: var(--font-eb-garamond);
+  max-width: 400px;
+  line-height: 1.3;
+  text-align: justify;
+  font-size: 1.3rem;
+}
+
+/* Links */
+.links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 2.5rem;
+}
+
+.linkGroup h4 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  opacity: 0.95;
+}
+
+.linkGroup a {
+  display: block;
+  text-decoration: none;
+  margin-bottom: 0.75rem;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.linkGroup a:hover {
+  opacity: 1;
+  transform: translateX(6px);
+}
+
+/* Divider */
+.divider {
+  height: 1px;
+  margin: 2rem 0;
+}
+
+/* Bottom Section */
+.bottomSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.copyright {
+  opacity: 0.75;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: var(--font-eb-garamond);
+}
+
+/* Social Icons */
+.socialIcons {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.socialIcons a {
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+  opacity: 0.8;
+}
+
+.socialIcons a:hover {
+  opacity: 1;
+  transform: translateY(-5px) scale(1.20);
+}
+
+/* Light Mode */
+[data-theme='light'] .footer .linkGroup a {
+  color: var(--secondary);
+}
+
+/* Dark Mode */
+[data-theme='dark'] .footer .linkGroup a  {
+  color: var(--filler);
+}
+
+/* Light Mode */
+[data-theme='light'] .divider{
+  background: var(--secondary);
+}
+
+/* Dark Mode */
+[data-theme='dark'] .divider{
+  background: var(--primary);
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .topSection {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .brand p {
+    margin: 0 auto;
+  }
+
+  .bottomSection {
+    justify-content: center;
+    text-align: center;
+  }
+}

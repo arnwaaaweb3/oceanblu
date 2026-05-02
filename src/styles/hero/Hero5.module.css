@@ -1,0 +1,162 @@
+/* app/components/hero5.module.css */
+.heroContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* WRAPPER - buat atur padding/margin nanti */
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  padding: 1 rem;
+  margin: 0;
+}
+
+/* Video Background Styles */
+.videoBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* DARK OVERLAY - Gelap, di antara video dan overlay biasa */
+.darkOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  pointer-events: none; 
+}
+
+/* Overlay untuk dark/light mode effect */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2; /* Diubah dari 1 jadi 2, biar di atas darkOverlay */
+  pointer-events: none;
+}
+
+/* SVG Background Container */
+.svgBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3; /* Diubah dari 2 jadi 3 */
+  pointer-events: none;
+}
+
+.svgLight,
+.svgDark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+/* Content wrapper biar di atas video dan SVG */
+.content {
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  min-height: 100vh; 
+}
+
+.title {
+  /* POSISI DI POJOK KANAN */
+  position: absolute;
+  right: 2rem;  
+  bottom: 8rem;
+  max-width: 48rem;
+  text-align: right;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  line-height: 1.2;
+  margin: 0;
+  font-family: var(--font-dejavu-condensed);
+  padding: 1rem;
+  color: var(--filter);
+  z-index: 10;
+}
+
+.subtitle {
+  position: absolute;
+  right: 2rem;  
+  top: 2.5rem;
+  max-width: 600px;
+  text-align: right;
+  font-size: clamp(0.5rem, 2.2vw, 1.3rem);
+  line-height: 1.2;
+  margin: 0;
+  font-family: var(--font-lexend);
+  padding: 1rem;
+  z-index: 10;
+}
+
+/* Light Mode */
+[data-theme='light'] .heroContainer {
+  background-color: var(--background);
+}
+
+/* Dark Mode */
+[data-theme='dark'] .heroContainer {
+  background-color: var(--primary);
+}
+
+/* Light Mode */
+[data-theme='light'] .subtitle {
+  color: var(--filler);
+}
+
+/* Dark Mode */
+[data-theme='dark'] .subtitle{
+  color: var(--background);
+}
+
+/* Light mode: tampilkan bground-light.svg */
+[data-theme='light'] .svgLight {
+  opacity: 1;
+}
+
+[data-theme='light'] .svgDark {
+  opacity: 0;
+}
+
+/* Dark mode: tampilkan bground-dark.svg */
+[data-theme='dark'] .svgLight {
+  opacity: 0;
+}
+
+[data-theme='dark'] .svgDark {
+  opacity: 1;
+}
+
+/* Light Mode Overlay */
+[data-theme='light'] .overlay {
+  background-color: rgba(var(--background-rgb), 0.7);
+}
+
+/* Dark Mode Overlay */
+[data-theme='dark'] .overlay {
+  background-color: rgba(var(--primary-rgb), 0.7);
+}
